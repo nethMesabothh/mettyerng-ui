@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useTranslation } from '@/lib/i18n';
 
 const newsData = [
   {
@@ -102,6 +103,7 @@ const categories = [
 export default function NewsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const { t } = useTranslation();
 
   const filteredNews = useMemo(() => {
     let filtered = newsData;
@@ -131,8 +133,7 @@ export default function NewsPage() {
         <div className="container">
           <AnimatedSection className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              ព័ត៌មាន
-              <span className="gradient-text"> & ព្រឹត្តិការណ៍</span>
+              {t('nav.news')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
               ស្វែងយល់ពីសកម្មភាព និងព្រឹត្តិការណ៍ចុងក្រោយរបស់យើង

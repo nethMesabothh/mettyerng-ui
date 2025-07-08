@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useTranslation } from '@/lib/i18n';
 
 const videosData = [
   {
@@ -129,6 +130,7 @@ export default function VideosPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedVideo, setSelectedVideo] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const filteredVideos = selectedCategory === 'all' 
     ? videosData 
@@ -148,8 +150,7 @@ export default function VideosPage() {
         <div className="container">
           <AnimatedSection className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              វីដេអូ
-              <span className="gradient-text"> ជម្រុំ</span>
+              {t('nav.videos')}
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
               ស្វែងយល់ពីសកម្មភាព និងកម្មវិធីរបស់យើងតាមរយៈវីដេអូ

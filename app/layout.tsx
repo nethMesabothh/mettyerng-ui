@@ -1,15 +1,10 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/sonner';
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-});
+import { LanguageProvider } from '@/components/providers/language-provider';
 
 export const metadata: Metadata = {
   title: {
@@ -53,21 +48,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="km" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen flex flex-col">
-            <Header />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          </div>
-          <Toaster />
+          <LanguageProvider>
+            <div className="min-h-screen flex flex-col">
+              <Header />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <Toaster />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

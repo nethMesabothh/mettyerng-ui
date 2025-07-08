@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { useTranslation } from '@/lib/i18n';
 
 const galleryData = [
   {
@@ -157,6 +158,7 @@ export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const filteredImages = selectedCategory === 'all' 
     ? galleryData 
@@ -183,8 +185,7 @@ export default function GalleryPage() {
             </motion.div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              ជម្រុំ
-              <span className="gradient-text"> រូបភាព</span>
+              {t('nav.gallery')}
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">

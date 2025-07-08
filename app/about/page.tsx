@@ -14,6 +14,7 @@ import {
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useTranslation } from "@/lib/i18n";
 
 const values = [
 	{
@@ -118,6 +119,8 @@ const timeline = [
 ];
 
 export default function AboutPage() {
+	const { t } = useTranslation();
+
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section - Enhanced Responsive */}
@@ -138,13 +141,11 @@ export default function AboutPage() {
 						</motion.div>
 
 						<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-							អំពី
-							<span className="gradient-text"> Mettyerng</span>
+							{t('about.title')}
 						</h1>
 
 						<p className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0">
-							ក្រុមអ្នកស្រឡាញ់សង្គម - ការកសាងសហគមន៍ដ៏រឹងមាំតាមរយៈការអប់រំ
-							វប្បធម៌ និងការស្រឡាញ់
+							{t('about.subtitle')}
 						</p>
 
 						<div className="flex flex-wrap justify-center gap-2 sm:gap-4">

@@ -115,7 +115,7 @@ export function HeroCarousel() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
                         >
-                          {slide.title}
+                          {t(slide.titleKey)}
                         </motion.h1>
                         
                         <motion.p
@@ -125,7 +125,6 @@ export function HeroCarousel() {
                           transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
                         >
                             {t(slide.subtitleKey)}
-                          {slide.subtitle}
                         </motion.p>
                       </div>
 

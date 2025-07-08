@@ -73,18 +73,18 @@ const config: Config = {
         
         // Primary Color - Deep Blue (#153D6F)
         primary: {
-          DEFAULT: '#153D6F',
-          50: '#EBF2FF',
-          100: '#D6E4FF',
-          200: '#B5CCFF',
-          300: '#83A9FF',
-          400: '#4A7CFF',
-          500: '#1E4FFF',
-          600: '#0A2FE8',
-          700: '#0B24B5',
-          800: '#102292',
-          900: '#153D6F', // Main primary
-          950: '#0F2C50', // Hover state
+          DEFAULT: '#004D8C',
+          50: '#E6F2FF',
+          100: '#CCE5FF',
+          200: '#99CCFF',
+          300: '#66B2FF',
+          400: '#3399FF',
+          500: '#007FFF',
+          600: '#0066CC',
+          700: '#004D99',
+          800: '#003366',
+          900: '#004D8C', // Main primary
+          950: '#003D73', // Hover state
         },
         
         // Secondary Color - Clean White (#FFFFFF)
@@ -186,7 +186,7 @@ const config: Config = {
         
         // Chart colors
         chart: {
-          '1': '#153D6F',
+          '1': '#004D8C',
           '2': '#6FBF73',
           '3': '#FF9800',
           '4': '#2196F3',

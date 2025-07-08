@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { ProjectCard } from '@/components/ui/project-card';
 import { ProjectFilters } from '@/components/filters/project-filters';
 import { useProjectStore, Project } from '@/lib/stores/project-store';
+import { useTranslation } from '@/lib/i18n';
 
 // Mock data - in production this would come from an API
 const mockProjects: Project[] = [
@@ -165,6 +166,7 @@ const projectStats = [
 export default function ProjectsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [showFilters, setShowFilters] = useState(false);
+  const { t } = useTranslation();
   
   const { 
     setProjects, 
@@ -196,12 +198,11 @@ export default function ProjectsPage() {
             </motion.div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Our
-              <span className="gradient-text"> Projects</span>
+              {t('projects.title')}
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
-              Discover our impactful projects and community initiatives
+              {t('projects.subtitle')}
             </p>
           </AnimatedSection>
         </div>
@@ -212,10 +213,7 @@ export default function ProjectsPage() {
         <div className="container">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Impact
-              <span className="block text-2xl md:text-3xl gradient-text mt-2">
-                សមិទ្ធផលរបស់យើង
-              </span>
+              {t('projects.impact')}
             </h2>
           </AnimatedSection>
 

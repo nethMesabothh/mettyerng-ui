@@ -49,20 +49,18 @@ const translations = {
       about: 'About',
       structure: 'Structure',
       news: 'News & Events',
-      videos: 'Videos',
-      projects: 'Projects',
-      gallery: 'Gallery',
-      contact: 'Contact',
-      joinUs: 'Join Us'
-    },
-    nav: {
       latestNews: 'Latest News',
       events: 'Events',
+      videos: 'Videos',
+      projects: 'Projects',
       allProjects: 'All Projects',
       community: 'Community',
       education: 'Education',
       culture: 'Culture',
-      sports: 'Sports'
+      sports: 'Sports',
+      gallery: 'Gallery',
+      contact: 'Contact',
+      joinUs: 'Join Us'
     },
     hero: {
       title: 'Community Builders',
@@ -82,7 +80,6 @@ const translations = {
     home: {
       achievements: 'Our Achievements',
       achievementsDesc: 'Through the dedication of our volunteers, we have achieved success in various fields',
-      mission: 'Our Mission',
       missionTitle: 'Our Mission',
       missionDesc: 'We are a group of social enthusiasts created to help communities through education, culture, and social development.',
       missionText: 'We believe that education is the most important foundation for development and building a bright future for Cambodian children and youth.',
@@ -207,20 +204,18 @@ const translations = {
       about: 'អំពីយើង',
       structure: 'រចនាសម្ព័ន្ធ',
       news: 'ព័ត៌មាន & ព្រឹត្តិការណ៍',
-      videos: 'វីដេអូ',
-      projects: 'គម្រោង',
-      gallery: 'ជម្រុំរូបភាព',
-      contact: 'ទំនាក់ទំនង',
-      joinUs: 'ចូលរួម'
-    },
-    nav: {
       latestNews: 'ព័ត៌មានថ្មី',
       events: 'ព្រឹត្តិការណ៍',
+      videos: 'វីដេអូ',
+      projects: 'គម្រោង',
       allProjects: 'គម្រោងទាំងអស់',
       community: 'សហគមន៍',
       education: 'ការអប់រំ',
       culture: 'វប្បធម៌',
-      sports: 'កីឡា'
+      sports: 'កីឡា',
+      gallery: 'ជម្រុំរូបភាព',
+      contact: 'ទំនាក់ទំនង',
+      joinUs: 'ចូលរួម'
     },
     hero: {
       title: 'ក្រុមអ្នកស្រឡាញ់សង្គម',
@@ -240,7 +235,6 @@ const translations = {
     home: {
       achievements: 'ជោគជ័យរបស់យើង',
       achievementsDesc: 'តាមរយៈការខិតខំប្រឹងប្រែងរបស់អ្នកស្ម័គ្រចិត្ត យើងបានសម្រេចជោគជ័យនៅក្នុងវិស័យផ្សេងៗ',
-      mission: 'បេសកកម្មរបស់យើង',
       missionTitle: 'បេសកកម្មរបស់យើង',
       missionDesc: 'យើងជាក្រុមអ្នកស្រឡាញ់សង្គមដែលបានបង្កើតឡើងក្នុងគោលបំណង ជួយដល់សហគមន៍តាមរយៈការអប់រំ វប្បធម៌ និងការអភិវឌ្ឍន៍សង្គម។',
       missionText: 'យើងជឿជាក់ថា ការអប់រំគឺជាមូលដ្ឋានសំខាន់បំផុតនៃការអភិវឌ្ឍន៍ និងការសាងសង់អនាគតដ៏ភ្លឺស្វាងសម្រាប់កុមារ និងយុវជនកម្ពុជា។',

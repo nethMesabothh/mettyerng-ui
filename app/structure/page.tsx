@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { PersonCard } from "@/components/ui/person-card";
 import { usePersonStore, Person } from "@/lib/stores/person-store";
+import { useTranslation } from "@/lib/i18n";
 
 // Mock data - in production this would come from an API
 const organizationData = [
@@ -274,6 +275,7 @@ export default function StructurePage() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedDepartment, setSelectedDepartment] = useState<string>("all");
 	const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+	const { t } = useTranslation();
 
 	const toggleSection = (sectionId: string) => {
 		setExpandedSections((prev) =>
@@ -324,12 +326,11 @@ export default function StructurePage() {
 						</motion.div>
 
 						<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-							រចនាសម្ព័ន្ធ
-							<span className="gradient-text"> អង្គការ</span>
+							{t('nav.structure')}
 						</h1>
 
 						<p className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0">
-							ស្វែងយល់ពីរចនាសម្ព័ន្ធអង្គការ និងក្រុមការងាររបស់យើង
+							{t('about.subtitle')}
 						</p>
 
 						{/* Stats */}

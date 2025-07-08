@@ -11,6 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
+import { useTranslation } from '@/lib/i18n';
 
 const contactInfo = [
   {
@@ -62,6 +63,7 @@ const departments = [
 ];
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -112,12 +114,11 @@ export default function ContactPage() {
             </motion.div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              ទំនាក់ទំនង
-              <span className="gradient-text"> ជាមួយយើង</span>
+              {t('contact.title')}
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
-              ទាក់ទងមកយើងសម្រាប់ការសហការ ការចូលរួម ឬសំណួរផ្សេងៗ
+              {t('contact.subtitle')}
             </p>
           </AnimatedSection>
         </div>
@@ -128,10 +129,7 @@ export default function ContactPage() {
         <div className="container">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              ព័ត៌មានទំនាក់ទំនង
-              <span className="block text-2xl md:text-3xl gradient-text mt-2">
-                Contact Information
-              </span>
+              {t('contact.info')}
             </h2>
           </AnimatedSection>
 
