@@ -6,6 +6,7 @@ import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import { CTAButton } from '@/components/ui/cta-button';
+import { useTranslation } from '@/lib/i18n';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -17,33 +18,35 @@ const slides = [
   {
     id: 1,
     image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-    title: 'ក្រុមអ្នកស្រឡាញ់សង្គម',
-    subtitle: 'Building Stronger Communities Together',
-    description: 'យើងជាក្រុមអ្នកស្រឡាញ់សង្គមដែលផ្តោតលើការអប់រំ វប្បធម៌ និងការអភិវឌ្ឍន៍សហគមន៍',
-    cta: 'Learn More',
+    titleKey: 'hero.title',
+    subtitleKey: 'hero.subtitle',
+    descriptionKey: 'hero.description',
+    ctaKey: 'hero.learnMore',
     ctaLink: '/about',
   },
   {
     id: 2,
     image: 'https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-    title: 'គម្រោងកាត់សក់សប្បុរស',
-    subtitle: 'Free Haircut Project',
-    description: 'ការកាត់សក់ដោយឥតគិតថ្លៃសម្រាប់បងប្អូនដែលមានស្ថានភាពបញ្ហា',
-    cta: 'View Projects',
+    titleKey: 'hero.projectTitle',
+    subtitleKey: 'hero.projectSubtitle',
+    descriptionKey: 'hero.projectDescription',
+    ctaKey: 'hero.viewProjects',
     ctaLink: '/projects',
   },
   {
     id: 3,
     image: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-    title: 'ការអប់រំ និងវប្បធម៌',
-    subtitle: 'Education & Culture',
-    description: 'ការលើកកម្ពស់ការអប់រំ និងការអភិរក្សវប្បធម៌ខ្មែរ',
-    cta: 'Join Us',
+    titleKey: 'hero.educationTitle',
+    subtitleKey: 'hero.educationSubtitle',
+    descriptionKey: 'hero.educationDescription',
+    ctaKey: 'hero.joinUs',
     ctaLink: '/contact',
   },
 ];
 
 export function HeroCarousel() {
+  const { t } = useTranslation();
+
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <Swiper
@@ -112,7 +115,7 @@ export function HeroCarousel() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
                         >
-                          {slide.title}
+                          {t(slide.titleKey)}
                         </motion.h1>
                         
                         <motion.p
@@ -121,7 +124,7 @@ export function HeroCarousel() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
                         >
-                          {slide.subtitle}
+                          {t(slide.subtitleKey)}
                         </motion.p>
                       </div>
 
@@ -131,7 +134,7 @@ export function HeroCarousel() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.7 + index * 0.1 }}
                       >
-                        {slide.description}
+                        {t(slide.descriptionKey)}
                       </motion.p>
 
                       <motion.div
@@ -145,7 +148,7 @@ export function HeroCarousel() {
                           size="lg"
                           className="group text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 bg-primary-900 text-white hover:bg-primary-950"
                         >
-                          {slide.cta}
+                          {t(slide.ctaKey)}
                           <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                         </CTAButton>
                         
@@ -156,7 +159,7 @@ export function HeroCarousel() {
                           className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-primary-900 group text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4"
                         >
                           <Play className="mr-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
-                          Watch Video
+                          {t('hero.watchVideo')}
                         </CTAButton>
                       </motion.div>
                     </motion.div>

@@ -7,46 +7,43 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { FilterChip } from '@/components/ui/filter-chip';
-import { useProjectStore } from '@/lib/stores/project-store';
+import { LanguageSwitcher } from '@/components/ui/language-switcher';
+import { useTranslation } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 
 const navigation = [
-  { name: 'ទំព័រដើម', name_en: 'Home', href: '/' },
-  { name: 'អំពីយើង', name_en: 'About', href: '/about' },
-  { name: 'រចនាសម្ព័ន្ធ', name_en: 'Structure', href: '/structure' },
+  { key: 'nav.home', href: '/' },
+  { key: 'nav.about', href: '/about' },
+  { key: 'nav.structure', href: '/structure' },
   { 
-    name: 'ព័ត៌មាន', 
-    name_en: 'News & Events', 
+    key: 'nav.news',
     href: '/news',
     submenu: [
-      { name: 'ព័ត៌មានថ្មី', name_en: 'Latest News', href: '/news' },
-      { name: 'ព្រឹត្តិការណ៍', name_en: 'Events', href: '/news?category=events' },
+      { key: 'nav.latestNews', href: '/news' },
+      { key: 'nav.events', href: '/news?category=events' },
     ]
   },
-  { name: 'វីដេអូ', name_en: 'Videos', href: '/videos' },
+  { key: 'nav.videos', href: '/videos' },
   { 
-    name: 'គម្រោង', 
-    name_en: 'Projects', 
+    key: 'nav.projects',
     href: '/projects',
     submenu: [
-      { name: 'គម្រោងទាំងអស់', name_en: 'All Projects', href: '/projects' },
-      { name: 'សហគមន៍', name_en: 'Community', href: '/projects?category=community' },
-      { name: 'ការអប់រំ', name_en: 'Education', href: '/projects?category=education' },
-      { name: 'វប្បធម៌', name_en: 'Culture', href: '/projects?category=culture' },
-      { name: 'កីឡា', name_en: 'Sports', href: '/projects?category=sports' },
+      { key: 'nav.allProjects', href: '/projects' },
+      { key: 'nav.community', href: '/projects?category=community' },
+      { key: 'nav.education', href: '/projects?category=education' },
+      { key: 'nav.culture', href: '/projects?category=culture' },
+      { key: 'nav.sports', href: '/projects?category=sports' },
     ]
   },
-  { name: 'ទំនាក់ទំនង', name_en: 'Contact', href: '/contact' },
+  { key: 'nav.contact', href: '/contact' },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useTranslation();
   
-  const { getProjectCategories, setFilters } = useProjectStore();
-  const projectCategories = getProjectCategories();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,11 +54,6 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleCategoryFilter = (categoryId: string) => {
-    setFilters({ category: categoryId });
-  };
-
-  const isProjectsPage = pathname === '/projects';
 
   return (
     <motion.header
@@ -99,7 +91,7 @@ export function Header() {
                 {item.submenu ? (
                   <>
                     <button className="flex items-center space-x-1 text-white hover:text-accent-400 transition-colors duration-200 py-2">
-                      <span className="font-medium">{item.name_en}</span>
+                      <span className="font-medium">{t(item.key)}</span>
                       <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
                     </button>
                     <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
@@ -109,7 +101,7 @@ export function Header() {
                           href={subItem.href}
                           className="block px-4 py-2 text-sm text-text-primary hover:bg-neutral-100 hover:text-primary-900 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200"
                         >
-                          {subItem.name_en}
+                          {t(subItem.key)}
                         </Link>
                       ))}
                     </div>
@@ -122,7 +114,7 @@ export function Header() {
                       pathname === item.href && "text-accent-400"
                     )}
                   >
-                    {item.name_en}
+                    {t(item.key)}
                     {pathname === item.href && (
                       <motion.div
                         className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-400"
@@ -137,10 +129,11 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* Language Switcher & CTA Button */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <LanguageSwitcher />
             <Button asChild className="bg-primary-900 text-white hover:bg-primary-950 border border-accent-400 hover:border-accent-300">
-              <Link href="/contact">ចូលរួម Join Us</Link>
+              <Link href="/contact">{t('nav.joinUs')}</Link>
             </Button>
           </div>
 
@@ -176,7 +169,7 @@ export function Header() {
                         )}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        {item.name}
+                        {t(item.key)}
                       </Link>
                       {item.submenu && (
                         <div className="ml-4 mt-2 space-y-2">
@@ -187,7 +180,7 @@ export function Header() {
                               className="block text-sm text-gray-600 hover:text-primary-900 py-1 transition-colors duration-200"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
-                              {subItem.name}
+                              {t(subItem.key)}
                             </Link>
                           ))}
                         </div>
@@ -196,10 +189,13 @@ export function Header() {
                   ))}
                 </nav>
                 
-                <div className="pt-6 border-t border-neutral-200">
+                <div className="pt-6 border-t border-neutral-200 space-y-4">
+                  <div className="flex justify-center">
+                    <LanguageSwitcher variant="compact" />
+                  </div>
                   <Button asChild className="w-full bg-primary-900 text-white hover:bg-primary-950">
                     <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                      ចូលរួម Join Us
+                      {t('nav.joinUs')}
                     </Link>
                   </Button>
                 </div>

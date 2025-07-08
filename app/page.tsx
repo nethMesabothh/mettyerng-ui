@@ -9,56 +9,57 @@ import { MetricCard } from "@/components/ui/metric-card";
 import { CTAButton } from "@/components/ui/cta-button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n";
 
 const stats = [
 	{
-		title: "សមាជិក Members",
+		titleKey: "stats.members",
 		value: 150,
 		suffix: "+",
 		icon: Users,
-		description: "សមាជិកសកម្មក្នុងក្រុម",
+		descriptionKey: "home.activeMembers",
 	},
 	{
-		title: "គម្រោង Projects",
+		titleKey: "stats.projects",
 		value: 25,
 		suffix: "+",
 		icon: Award,
-		description: "គម្រោងបានអនុវត្តជោគជ័យ",
+		descriptionKey: "home.successfulProjects",
 	},
 	{
-		title: "ការអប់រំ Education",
+		titleKey: "stats.beneficiaries",
 		value: 500,
 		suffix: "+",
 		icon: BookOpen,
-		description: "កុមារ និងយុវជនបានទទួលការអប់រំ",
+		descriptionKey: "home.educatedChildren",
 	},
 	{
-		title: "ការជួយប្រជាជន Aid",
+		titleKey: "stats.volunteers",
 		value: 1000,
 		suffix: "+",
 		icon: Heart,
-		description: "គ្រួសារបានទទួលការជួយ",
+		descriptionKey: "home.helpedFamilies",
 	},
 ];
 
 const features = [
 	{
-		title: "ការអប់រំ Education",
-		description: "ការផ្តល់ការអប់រំគុណភាពដល់កុមារ និងយុវជនក្នុងសហគមន៍",
+		titleKey: "home.education",
+		descriptionKey: "home.educationDesc",
 		image:
 			"https://images.pexels.com/photos/5427652/pexels-photo-5427652.jpeg?auto=compress&cs=tinysrgb&w=800",
 		link: "/about#education",
 	},
 	{
-		title: "វប្បធម៌ Culture",
-		description: "ការអភិរក្ស និងលើកកម្ពស់វប្បធម៌ប្រពៃណីខ្មែរ",
+		titleKey: "home.culture",
+		descriptionKey: "home.cultureDesc",
 		image:
 			"https://images.pexels.com/photos/8369686/pexels-photo-8369686.jpeg?auto=compress&cs=tinysrgb&w=800",
 		link: "/about#culture",
 	},
 	{
-		title: "សង្គម Social",
-		description: "ការជួយប្រជាជនដែលមានស្ថានភាពពិបាក",
+		titleKey: "home.social",
+		descriptionKey: "home.socialDesc",
 		image:
 			"https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800",
 		link: "/projects",
@@ -66,6 +67,8 @@ const features = [
 ];
 
 export default function HomePage() {
+	const { t } = useTranslation();
+
 	return (
 		<>
 			{/* Hero Section */}
@@ -76,20 +79,24 @@ export default function HomePage() {
 				<div className="container">
 					<AnimatedSection className="text-center mb-16">
 						<h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-							ជោគជ័យរបស់យើង
-							<span className="block text-2xl md:text-3xl gradient-text mt-2">
-								Our Achievements
-							</span>
+							{t('home.achievements')}
 						</h2>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-							តាមរយៈការខិតខំប្រឹងប្រែងរបស់អ្នកស្ម័គ្រចិត្ត
-							យើងបានសម្រេចជោគជ័យនៅក្នុងវិស័យផ្សេងៗ
+							{t('home.achievementsDesc')}
 						</p>
 					</AnimatedSection>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						{stats.map((stat, index) => (
-							<MetricCard key={stat.title} {...stat} delay={index * 0.1} />
+							<MetricCard 
+								key={stat.titleKey} 
+								title={t(stat.titleKey)}
+								description={t(stat.descriptionKey)}
+								value={stat.value}
+								suffix={stat.suffix}
+								icon={stat.icon}
+								delay={index * 0.1} 
+							/>
 						))}
 					</div>
 				</div>
@@ -102,25 +109,20 @@ export default function HomePage() {
 						<AnimatedSection direction="left">
 							<div className="space-y-6">
 								<h2 className="text-3xl md:text-4xl font-bold text-text-primary">
-									បេសកកម្មរបស់យើង
-									<span className="block text-2xl md:text-3xl gradient-text mt-2">
-										Our Mission
-									</span>
+									{t('home.missionTitle')}
 								</h2>
 
 								<p className="text-lg text-gray-600 leading-relaxed">
-									យើងជាក្រុមអ្នកស្រឡាញ់សង្គមដែលបានបង្កើតឡើងក្នុងគោលបំណង
-									ជួយដល់សហគមន៍តាមរយៈការអប់រំ វប្បធម៌ និងការអភិវឌ្ឍន៍សង្គម។
+									{t('home.missionDesc')}
 								</p>
 
 								<p className="text-lg text-gray-600 leading-relaxed">
-									យើងជឿជាក់ថា ការអប់រំគឺជាមូលដ្ឋានសំខាន់បំផុតនៃការអភិវឌ្ឍន៍
-									និងការសាងសង់អនាគតដ៏ភ្លឺស្វាងសម្រាប់កុមារ និងយុវជនកម្ពុជា។
+									{t('home.missionText')}
 								</p>
 
 								<div className="flex flex-col sm:flex-row gap-4">
 									<CTAButton href="/about" size="lg">
-										Learn More
+										{t('common.learnMore')}
 										<ArrowRight className="ml-2 w-5 h-5" />
 									</CTAButton>
 
@@ -132,7 +134,7 @@ export default function HomePage() {
 									>
 										<a href="/contact" className="flex items-center">
 											<Heart className="mr-2 w-5 h-5" />
-											Join Our Mission
+											{t('home.becomeVolunteer')}
 										</a>
 									</Button>
 								</div>
@@ -188,20 +190,17 @@ export default function HomePage() {
 				<div className="container">
 					<AnimatedSection className="text-center mb-16">
 						<h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-							វិស័យសកម្មភាព
-							<span className="block text-2xl md:text-3xl gradient-text mt-2">
-								Our Focus Areas
-							</span>
+							{t('home.focusAreas')}
 						</h2>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-							យើងផ្តោតលើការកសាងសហគមន៍តាមរយៈវិស័យសំខាន់ៗទាំងនេះ
+							{t('home.focusAreasDesc')}
 						</p>
 					</AnimatedSection>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 						{features.map((feature, index) => (
 							<AnimatedSection
-								key={feature.title}
+								key={feature.titleKey}
 								delay={index * 0.2}
 								className="group"
 							>
@@ -209,16 +208,16 @@ export default function HomePage() {
 									<div className="aspect-video overflow-hidden">
 										<img
 											src={feature.image}
-											alt={feature.title}
+											alt={t(feature.titleKey)}
 											className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
 										/>
 									</div>
 									<CardContent className="p-6">
 										<h3 className="text-xl font-bold text-text-primary mb-3 gradient-text">
-											{feature.title}
+											{t(feature.titleKey)}
 										</h3>
 										<p className="text-gray-600 leading-relaxed mb-4">
-											{feature.description}
+											{t(feature.descriptionKey)}
 										</p>
 										<Button
 											variant="ghost"
@@ -229,7 +228,7 @@ export default function HomePage() {
 												href={feature.link}
 												className="flex items-center group"
 											>
-												Learn More
+												{t('common.learnMore')}
 												<ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
 											</a>
 										</Button>
@@ -258,15 +257,11 @@ export default function HomePage() {
 				<div className="container relative">
 					<AnimatedSection className="text-center text-white">
 						<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-							ចូលរួមជាមួយយើង
-							<span className="block text-2xl md:text-3xl lg:text-4xl mt-2 text-accent-400">
-								Join Our Community
-							</span>
+							{t('home.joinCommunity')}
 						</h2>
 
 						<p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8 leading-relaxed">
-							ក្លាយជាផ្នែកមួយនៃការផ្លាស់ប្តូរវិជ្ជមាន
-							ចូលរួមវិភាគទានក្នុងការកសាង់សហគមន៍ដ៏រឹងមាំ
+							{t('home.joinDesc')}
 						</p>
 
 						<div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -276,7 +271,7 @@ export default function HomePage() {
 								className="bg-white text-primary-900 hover:bg-neutral-100 text-lg px-8 py-4"
 							>
 								<Heart className="mr-2 w-6 h-6" />
-								Become a Volunteer
+								{t('home.becomeVolunteer')}
 							</CTAButton>
 
 							<CTAButton
@@ -286,7 +281,7 @@ export default function HomePage() {
 								className="border-white text-white hover:bg-white hover:text-primary-900 text-lg px-8 py-4"
 							>
 								<Award className="mr-2 w-6 h-6" />
-								View Our Projects
+								{t('home.viewProjects')}
 							</CTAButton>
 						</div>
 					</AnimatedSection>

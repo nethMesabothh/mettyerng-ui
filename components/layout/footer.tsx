@@ -6,36 +6,34 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Facebook, Youtube, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { useTranslation } from '@/lib/i18n';
 
 const footerLinks = [
   {
-    title: 'អំពីយើង',
-    title_en: 'About Us',
+    titleKey: 'footer.aboutUs',
     links: [
-      { name: 'ប្រវត្តិ', name_en: 'History', href: '/about' },
-      { name: 'បេសកកម្ម', name_en: 'Mission', href: '/about#mission' },
-      { name: 'ទស្សនវិស័យ', name_en: 'Vision', href: '/about#vision' },
-      { name: 'តម្លៃ', name_en: 'Values', href: '/about#values' },
+      { nameKey: 'footer.history', href: '/about' },
+      { nameKey: 'footer.mission', href: '/about#mission' },
+      { nameKey: 'footer.vision', href: '/about#vision' },
+      { nameKey: 'footer.values', href: '/about#values' },
     ],
   },
   {
-    title: 'សកម្មភាព',
-    title_en: 'Activities',
+    titleKey: 'footer.activities',
     links: [
-      { name: 'ព័ត៌មាន', name_en: 'News', href: '/news' },
-      { name: 'គម្រោង', name_en: 'Projects', href: '/projects' },
-      { name: 'វីដេអូ', name_en: 'Videos', href: '/videos' },
-      { name: 'រូបភាព', name_en: 'Gallery', href: '/gallery' },
+      { nameKey: 'footer.news', href: '/news' },
+      { nameKey: 'footer.projects', href: '/projects' },
+      { nameKey: 'footer.videos', href: '/videos' },
+      { nameKey: 'footer.gallery', href: '/gallery' },
     ],
   },
   {
-    title: 'ទំនាក់ទំនង',
-    title_en: 'Contact',
+    titleKey: 'footer.contact',
     links: [
-      { name: 'ទំនាក់ទំនង', name_en: 'Contact Us', href: '/contact' },
-      { name: 'ចូលរួម', name_en: 'Join Us', href: '/contact#join' },
-      { name: 'បេរ័ត្នស្ម័គ្រចិត្ត', name_en: 'Volunteer', href: '/contact#volunteer' },
-      { name: 'ការឧបត្ថម្ភ', name_en: 'Support', href: '/contact#support' },
+      { nameKey: 'footer.contactUs', href: '/contact' },
+      { nameKey: 'footer.joinUs', href: '/contact#join' },
+      { nameKey: 'footer.volunteer', href: '/contact#volunteer' },
+      { nameKey: 'footer.support', href: '/contact#support' },
     ],
   },
 ];
@@ -53,6 +51,8 @@ const contactInfo = [
 ];
 
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-primary-900 text-white">
       <div className="container section-padding">
@@ -101,13 +101,13 @@ export function Footer() {
           {/* Links Sections */}
           {footerLinks.map((section, index) => (
             <motion.div
-              key={section.title}
+              key={section.titleKey}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="space-y-6"
             >
-              <h3 className="text-lg font-semibold text-white">{section.title_en}</h3>
+              <h3 className="text-lg font-semibold text-white">{t(section.titleKey)}</h3>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.href}>
@@ -115,7 +115,7 @@ export function Footer() {
                       href={link.href}
                       className="text-gray-300 hover:text-accent-400 transition-colors duration-200 text-sm"
                     >
-                      {link.name_en}
+                      {t(link.nameKey)}
                     </Link>
                   </li>
                 ))}
@@ -157,16 +157,16 @@ export function Footer() {
           >
             <h3 className="text-lg font-semibold text-white mb-4">ព័ត៌មានថ្មី Newsletter</h3>
             <p className="text-gray-300 text-sm mb-4">
-              ចុះឈ្មោះទទួលព័ត៌មានថ្មីៗ និងសកម្មភាពរបស់យើង
+              {t('footer.newsletterDesc')}
             </p>
             <div className="flex space-x-2">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t('footer.emailPlaceholder')}
                 className="flex-1 px-4 py-2 bg-primary-800 border border-primary-700 rounded-lg text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-transparent"
               />
               <Button className="bg-primary-900 text-white hover:bg-primary-950 border border-accent-400">
-                Subscribe
+                {t('footer.subscribe')}
               </Button>
             </div>
           </motion.div>
@@ -186,10 +186,10 @@ export function Footer() {
           </p>
           <div className="flex space-x-6 text-sm">
             <Link href="/privacy" className="text-gray-300 hover:text-accent-400 transition-colors duration-200">
-              Privacy Policy
+              {t('footer.privacy')}
             </Link>
             <Link href="/terms" className="text-gray-300 hover:text-accent-400 transition-colors duration-200">
-              Terms of Service
+              {t('footer.terms')}
             </Link>
           </div>
         </motion.div>
