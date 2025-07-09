@@ -1,17 +1,41 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { DivideIcon as LucideIcon } from "lucide-react";
+import React, { useEffect, useRef } from "react";
+import { motion, animate } from "framer-motion";
+import { type LucideIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 interface MetricCardProps {
 	title: string;
 	value: number;
 	suffix?: string;
-	icon: typeof LucideIcon;
+	icon: LucideIcon;
 	description: string;
 	delay?: number;
+}
+
+// Animated number component
+function AnimatedNumber({ value }: { value: number }) {
+	const ref = useRef<HTMLSpanElement>(null);
+
+	useEffect(() => {
+		const node = ref.current;
+		if (!node) return;
+
+		const controls = animate(0, value, {
+			duration: 1.5,
+			delay: 0.2,
+			ease: "easeOut",
+			onUpdate(latest) {
+				node.textContent = Math.round(latest).toLocaleString();
+			},
+		});
+
+		return () => controls.stop();
+	}, [value]);
+
+	return <span ref={ref} />;
 }
 
 export function MetricCard({
@@ -28,35 +52,24 @@ export function MetricCard({
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.6, delay }}
 			viewport={{ once: true }}
-			whileHover={{ y: -5 }}
+			className="h-full"
 		>
-			<Card className="text-center hover:shadow-xl transition-all duration-300 group">
-				<CardContent className="p-6">
-					<div className="w-16 h-16 bg-gradient-to-br from-khmer-gold to-khmer-red rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+			<Card className="text-center h-full hover:shadow-xl transition-all duration-300 group bg-white border-transparent hover:border-blue-100 border-2">
+				<CardContent className="p-6 flex flex-col items-center justify-center">
+					{/* FIXED: Icon background now uses primary blue */}
+					<div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
 						<Icon className="w-8 h-8 text-white" />
 					</div>
 
-					<motion.div
-						initial={{ scale: 0 }}
-						whileInView={{ scale: 1 }}
-						transition={{ duration: 0.5, delay: delay + 0.2 }}
-						viewport={{ once: true }}
-						className="text-3xl font-bold text-gray-900 mb-2"
-					>
-						<motion.span
-							initial={{ opacity: 0 }}
-							whileInView={{ opacity: 1 }}
-							transition={{ duration: 0.5, delay: delay + 0.4 }}
-							viewport={{ once: true }}
-						>
-							{value}
-						</motion.span>
-						<span className="text-khmer-gold">{suffix}</span>
-					</motion.div>
+					<div className="text-4xl font-bold text-gray-900 mb-2">
+						{/* IMPROVED: Added number counting animation */}
+						<AnimatedNumber value={value} />
+						{/* FIXED: Suffix color is now primary blue */}
+						<span className="text-blue-600">{suffix}</span>
+					</div>
 
-					<h3 className="text-lg font-semibold text-gray-900 mb-1">{title}</h3>
-
-					<p className="text-gray-600 text-sm">{description}</p>
+					<h3 className="text-lg font-semibold text-gray-800 mb-1">{title}</h3>
+					<p className="text-gray-500 text-sm">{description}</p>
 				</CardContent>
 			</Card>
 		</motion.div>

@@ -141,11 +141,11 @@ export default function AboutPage() {
 						</motion.div>
 
 						<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-							{t('about.title')}
+							{t("about.title")}
 						</h1>
 
 						<p className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0">
-							{t('about.subtitle')}
+							{t("about.subtitle")}
 						</p>
 
 						<div className="flex flex-wrap justify-center gap-2 sm:gap-4">

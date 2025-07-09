@@ -1,222 +1,73 @@
+// FILE: /components/hero-carousel.tsx
+
 "use client";
 
-import React, { useRef, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
-import { CTAButton } from '@/components/ui/cta-button';
-import { useTranslation } from '@/lib/i18n';
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay, EffectFade } from "swiper/modules";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+
+const MotionImage = motion(Image);
 
 const slides = [
-  {
-    id: 1,
-    image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-    titleKey: 'hero.title',
-    subtitleKey: 'hero.subtitle',
-    descriptionKey: 'hero.description',
-    ctaKey: 'hero.learnMore',
-    ctaLink: '/about',
-  },
-  {
-    id: 2,
-    image: 'https://images.pexels.com/photos/3184295/pexels-photo-3184295.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-    titleKey: 'hero.projectTitle',
-    subtitleKey: 'hero.projectSubtitle',
-    descriptionKey: 'hero.projectDescription',
-    ctaKey: 'hero.viewProjects',
-    ctaLink: '/projects',
-  },
-  {
-    id: 3,
-    image: 'https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-    titleKey: 'hero.educationTitle',
-    subtitleKey: 'hero.educationSubtitle',
-    descriptionKey: 'hero.educationDescription',
-    ctaKey: 'hero.joinUs',
-    ctaLink: '/contact',
-  },
+	{ id: 1, image: "/slider-1.png" },
+	{ id: 2, image: "/slider-2.jpg" },
+	{ id: 3, image: "/slider-3.jpg" },
+	{ id: 4, image: "/slider-4.jpg" },
 ];
 
+// Simplified animation for "contain" style to prevent empty edges
+const kenBurnsVariants = {
+	active: { scale: 1.1 },
+	inactive: { scale: 1 },
+};
+
 export function HeroCarousel() {
-  const { t } = useTranslation();
+	return (
+		// FIXED: Reduced the height of the carousel container.
+		// It now calculates the screen height minus the header height (h-20 = 5rem).
+		<div className="relative w-full h-[calc(100vh-5rem)] overflow-hidden group bg-gray-100">
+			<Swiper
+				modules={[Navigation, Autoplay, EffectFade]}
+				effect="fade"
+				fadeEffect={{ crossFade: true }}
+				slidesPerView={1}
+				navigation={{
+					nextEl: ".swiper-button-next",
+					prevEl: ".swiper-button-prev",
+				}}
+				autoplay={{ delay: 5000, disableOnInteraction: false }}
+				loop
+				className="h-full w-full"
+			>
+				{slides.map((slide, index) => (
+					<SwiperSlide
+						key={slide.id}
+						className="relative h-full w-full my-[50px]"
+					>
+						{({ isActive }) => (
+							<MotionImage
+								src={slide.image}
+								alt={`Hero Carousel Slide ${slide.id}`}
+								fill
+								priority={index === 0}
+								style={{ objectFit: "contain" }}
+								sizes="100vw"
+								variants={kenBurnsVariants}
+							/>
+						)}
+					</SwiperSlide>
+				))}
 
-  return (
-    <div className="relative h-screen w-full overflow-hidden">
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay, EffectFade]}
-        effect="fade"
-        spaceBetween={0}
-        slidesPerView={1}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        pagination={{ 
-          clickable: true,
-          el: '.swiper-pagination',
-        }}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        loop
-        className="h-full w-full"
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 0,
-          },
-          768: {
-            slidesPerView: 1,
-            spaceBetween: 0,
-          },
-          1024: {
-            slidesPerView: 1,
-            spaceBetween: 0,
-          },
-        }}
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={slide.id} className="relative h-full w-full">
-            <div className="relative h-full w-full">
-              {/* Background Image */}
-              <div className="absolute inset-0 w-full h-full">
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="w-full h-full object-cover object-center"
-                  style={{ objectFit: 'cover' }}
-                />
-                <div className="absolute inset-0 bg-black/40" />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-900/80 via-primary-800/50 to-transparent" />
-              </div>
-
-              {/* Content */}
-              <div className="relative h-full flex items-center z-10">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                  <div className="max-w-3xl">
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: index * 0.2 }}
-                      className="space-y-4 sm:space-y-6"
-                    >
-                      <div className="space-y-3 sm:space-y-4">
-                        <motion.h1
-                          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
-                          initial={{ opacity: 0, x: -30 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
-                        >
-                          {t(slide.titleKey)}
-                        </motion.h1>
-                        
-                        <motion.p
-                          className="text-lg sm:text-xl md:text-2xl text-accent-400 font-semibold"
-                          initial={{ opacity: 0, x: -30 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
-                        >
-                            {t(slide.subtitleKey)}
-                        </motion.p>
-                      </div>
-
-                      <motion.p
-                        className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed max-w-2xl"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.7 + index * 0.1 }}
-                      >
-                        {t(slide.descriptionKey)}
-                      </motion.p>
-
-                      <motion.div
-                        className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.9 + index * 0.1 }}
-                      >
-                        <CTAButton
-                          href={slide.ctaLink}
-                          size="lg"
-                          className="group text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 bg-primary-900 text-white hover:bg-primary-950"
-                        >
-                          {t(slide.ctaKey)}
-                          <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                        </CTAButton>
-                        
-                        <CTAButton
-                          href="/videos"
-                          variant="outline"
-                          size="lg"
-                          className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-primary-900 group text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4"
-                        >
-                          <Play className="mr-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
-                          {t('hero.watchVideo')}
-                        </CTAButton>
-                      </motion.div>
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Elements */}
-              <motion.div
-                className="absolute top-1/4 right-10 w-16 h-16 sm:w-20 sm:h-20 bg-accent-400/20 rounded-full blur-xl"
-                animate={{ 
-                  y: [0, -20, 0],
-                  scale: [1, 1.1, 1]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              <motion.div
-                className="absolute bottom-1/4 right-1/4 w-12 h-12 sm:w-16 sm:h-16 bg-primary-600/20 rounded-full blur-xl"
-                animate={{ 
-                  y: [0, 15, 0],
-                  x: [0, 10, 0],
-                  scale: [1, 0.9, 1]
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-
-        {/* Custom Navigation */}
-        <div className="swiper-button-prev !left-4 !w-10 !h-10 sm:!w-12 sm:!h-12 !bg-white/20 !backdrop-blur-sm !rounded-full !border !border-white/30 after:!text-sm sm:after:!text-base after:!text-white after:!font-bold"></div>
-        <div className="swiper-button-next !right-4 !w-10 !h-10 sm:!w-12 sm:!h-12 !bg-white/20 !backdrop-blur-sm !rounded-full !border !border-white/30 after:!text-sm sm:after:!text-base after:!text-white after:!font-bold"></div>
-
-        {/* Custom Pagination */}
-        <div className="swiper-pagination !bottom-6 sm:!bottom-8"></div>
-      </Swiper>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white/50 rounded-full flex justify-center">
-          <div className="w-1 h-2 sm:h-3 bg-white/70 rounded-full mt-1 sm:mt-2" />
-        </div>
-      </motion.div>
-    </div>
-  );
+				{/* Navigation controls */}
+				<div className="swiper-button-prev !left-4 sm:!left-6 !w-12 !h-12 !text-white !bg-black/20 hover:!bg-black/40 !rounded-full transition-colors after:!text-lg"></div>
+				<div className="swiper-button-next !right-4 sm:!right-6 !w-12 !h-12 !text-white !bg-black/20 hover:!bg-black/40 !rounded-full transition-colors after:!text-lg"></div>
+			</Swiper>
+		</div>
+	);
 }

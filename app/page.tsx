@@ -10,6 +10,7 @@ import { CTAButton } from "@/components/ui/cta-button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n";
+import Image from "next/image";
 
 const stats = [
 	{
@@ -79,23 +80,23 @@ export default function HomePage() {
 				<div className="container">
 					<AnimatedSection className="text-center mb-16">
 						<h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-							{t('home.achievements')}
+							{t("home.achievements")}
 						</h2>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-							{t('home.achievementsDesc')}
+							{t("home.achievementsDesc")}
 						</p>
 					</AnimatedSection>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						{stats.map((stat, index) => (
-							<MetricCard 
-								key={stat.titleKey} 
+							<MetricCard
+								key={stat.titleKey}
 								title={t(stat.titleKey)}
 								description={t(stat.descriptionKey)}
 								value={stat.value}
 								suffix={stat.suffix}
 								icon={stat.icon}
-								delay={index * 0.1} 
+								delay={index * 0.1}
 							/>
 						))}
 					</div>
@@ -109,20 +110,20 @@ export default function HomePage() {
 						<AnimatedSection direction="left">
 							<div className="space-y-6">
 								<h2 className="text-3xl md:text-4xl font-bold text-text-primary">
-									{t('home.missionTitle')}
+									{t("home.missionTitle")}
 								</h2>
 
 								<p className="text-lg text-gray-600 leading-relaxed">
-									{t('home.missionDesc')}
+									{t("home.missionDesc")}
 								</p>
 
 								<p className="text-lg text-gray-600 leading-relaxed">
-									{t('home.missionText')}
+									{t("home.missionText")}
 								</p>
 
 								<div className="flex flex-col sm:flex-row gap-4">
 									<CTAButton href="/about" size="lg">
-										{t('common.learnMore')}
+										{t("common.learnMore")}
 										<ArrowRight className="ml-2 w-5 h-5" />
 									</CTAButton>
 
@@ -134,7 +135,7 @@ export default function HomePage() {
 									>
 										<a href="/contact" className="flex items-center">
 											<Heart className="mr-2 w-5 h-5" />
-											{t('home.becomeVolunteer')}
+											{t("home.becomeVolunteer")}
 										</a>
 									</Button>
 								</div>
@@ -186,50 +187,53 @@ export default function HomePage() {
 			</section>
 
 			{/* Features Section */}
-			<section className="section-padding bg-neutral-100">
+			<section className="py-20 lg:py-24 bg-white">
 				<div className="container">
 					<AnimatedSection className="text-center mb-16">
-						<h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-							{t('home.focusAreas')}
+						<h2 className="text-4xl font-bold text-gray-900">
+							{t("home.focusAreas")}
 						</h2>
-						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-							{t('home.focusAreasDesc')}
+						<p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+							{t("home.focusAreasDesc")}
 						</p>
 					</AnimatedSection>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						{features.map((feature, index) => (
 							<AnimatedSection
 								key={feature.titleKey}
-								delay={index * 0.2}
+								delay={index * 0.1}
 								className="group"
 							>
-								<Card className="h-full overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 bg-white">
-									<div className="aspect-video overflow-hidden">
-										<img
+								<Card className="h-full overflow-hidden hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 bg-gray-50 border-gray-200">
+									<div className="aspect-video overflow-hidden relative">
+										<Image
 											src={feature.image}
 											alt={t(feature.titleKey)}
-											className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+											fill
+											style={{ objectFit: "cover" }}
+											className="group-hover:scale-105 transition-transform duration-500"
+											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 										/>
 									</div>
 									<CardContent className="p-6">
-										<h3 className="text-xl font-bold text-text-primary mb-3 gradient-text">
+										<h3 className="text-xl font-bold text-gray-800 mb-3">
 											{t(feature.titleKey)}
 										</h3>
-										<p className="text-gray-600 leading-relaxed mb-4">
+										<p className="text-gray-600 leading-relaxed mb-6">
 											{t(feature.descriptionKey)}
 										</p>
 										<Button
 											variant="ghost"
 											asChild
-											className="p-0 h-auto text-primary-900 hover:text-accent-400"
+											className=" h-auto text-blue-600 hover:text-blue-700 font-semibold"
 										>
 											<a
 												href={feature.link}
-												className="flex items-center group"
+												className="flex items-center group/link"
 											>
-												{t('common.learnMore')}
-												<ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+												{t("common.learnMore")}
+												<ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-300" />
 											</a>
 										</Button>
 									</CardContent>
@@ -254,14 +258,14 @@ export default function HomePage() {
 					/>
 				</div>
 
-				<div className="container relative">
+				<div className="container relative text-white rounded-xl">
 					<AnimatedSection className="text-center text-white">
-						<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-							{t('home.joinCommunity')}
+						<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+							{t("home.joinCommunity")}
 						</h2>
 
 						<p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8 leading-relaxed">
-							{t('home.joinDesc')}
+							{t("home.joinDesc")}
 						</p>
 
 						<div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -271,7 +275,7 @@ export default function HomePage() {
 								className="bg-white text-primary-900 hover:bg-neutral-100 text-lg px-8 py-4"
 							>
 								<Heart className="mr-2 w-6 h-6" />
-								{t('home.becomeVolunteer')}
+								{t("home.becomeVolunteer")}
 							</CTAButton>
 
 							<CTAButton
@@ -281,7 +285,7 @@ export default function HomePage() {
 								className="border-white text-white hover:bg-white hover:text-primary-900 text-lg px-8 py-4"
 							>
 								<Award className="mr-2 w-6 h-6" />
-								{t('home.viewProjects')}
+								{t("home.viewProjects")}
 							</CTAButton>
 						</div>
 					</AnimatedSection>
