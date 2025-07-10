@@ -1,17 +1,19 @@
+"use client";
+
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { useState, useEffect } from "react";
 
-// Import the new JSON files
+// Import the translation files
 import en from "@/locales/en.json";
 import km from "@/locales/km.json";
 
 export type Language = "en" | "km";
 
-// The translations object is now clean and simple
+// The translations object
 const translations = { en, km };
 
-// This function remains the same, it correctly looks up keys
+// Function to get translation by key
 export const getTranslation = (key: string, language: Language): string => {
 	const keys = key.split(".");
 	let value: any = translations[language];
@@ -38,7 +40,7 @@ interface LanguageStore {
 export const useLanguageStore = create<LanguageStore>()(
 	persist(
 		(set, get) => ({
-			language: "km", // Default language set to Khmer to match the server
+			language: "km", // Default language set to Khmer
 			setLanguage: (language) => set({ language }),
 			t: (key: string) => {
 				const { language } = get();
@@ -51,8 +53,7 @@ export const useLanguageStore = create<LanguageStore>()(
 	)
 );
 
-// --- THE FIX IS HERE ---
-// This new useTranslation hook is now "hydration-aware"
+// Hydration-aware useTranslation hook
 export const useTranslation = () => {
 	const store = useLanguageStore();
 	const [isHydrated, setIsHydrated] = useState(false);

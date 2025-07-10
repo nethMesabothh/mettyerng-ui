@@ -46,35 +46,46 @@ const organizationData = [
 				phone: "+855 12 345 678",
 				location: "ភ្នំពេញ",
 				joinDate: "2018",
-				image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
-				skills: ["Leadership", "Strategic Planning", "Community Development", "Public Speaking"],
+				image:
+					"https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
+				skills: [
+					"Leadership",
+					"Strategic Planning",
+					"Community Development",
+					"Public Speaking",
+				],
 				experience: [
 					{
 						title: "Community Leader",
 						company: "Mettyerng Organization",
 						period: "2018 - Present",
-						description: "Leading community development initiatives and strategic planning for organizational growth."
-					}
+						description:
+							"Leading community development initiatives and strategic planning for organizational growth.",
+					},
 				],
 				education: [
 					{
 						degree: "Master in Public Administration",
 						institution: "Royal University of Phnom Penh",
-						year: "2015"
-					}
+						year: "2015",
+					},
 				],
 				socialLinks: [
-					{ platform: "LinkedIn", url: "https://linkedin.com", icon: "linkedin" }
+					{
+						platform: "LinkedIn",
+						url: "https://linkedin.com",
+						icon: "linkedin",
+					},
 				],
 				achievements: [
 					"Founded Mettyerng Organization in 2018",
 					"Led 25+ successful community projects",
-					"Recognized by local government for community service"
+					"Recognized by local government for community service",
 				],
 				languages: [
 					{ language: "Khmer", level: "Native" },
-					{ language: "English", level: "Fluent" }
-				]
+					{ language: "English", level: "Fluent" },
+				],
 			},
 			{
 				id: "2",
@@ -88,33 +99,40 @@ const organizationData = [
 				phone: "+855 12 345 679",
 				location: "ភ្នំពេញ",
 				joinDate: "2019",
-				image: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400",
-				skills: ["Project Management", "Event Planning", "Team Coordination", "Communication"],
+				image:
+					"https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400",
+				skills: [
+					"Project Management",
+					"Event Planning",
+					"Team Coordination",
+					"Communication",
+				],
 				experience: [
 					{
 						title: "Vice Chairman",
 						company: "Mettyerng Organization",
 						period: "2019 - Present",
-						description: "Supporting organizational leadership and managing key projects and initiatives."
-					}
+						description:
+							"Supporting organizational leadership and managing key projects and initiatives.",
+					},
 				],
 				education: [
 					{
 						degree: "Bachelor in Business Administration",
 						institution: "University of Cambodia",
-						year: "2017"
-					}
+						year: "2017",
+					},
 				],
 				socialLinks: [],
 				achievements: [
 					"Successfully coordinated 15+ major events",
-					"Improved organizational efficiency by 40%"
+					"Improved organizational efficiency by 40%",
 				],
 				languages: [
 					{ language: "Khmer", level: "Native" },
-					{ language: "English", level: "Intermediate" }
-				]
-			}
+					{ language: "English", level: "Intermediate" },
+				],
+			},
 		],
 	},
 	{
@@ -124,7 +142,8 @@ const organizationData = [
 		icon: Shield,
 		color: "from-red-500 to-pink-500",
 		bgColor: "bg-red-50",
-		description: "ផ្តល់ការណែនាំ និងការគាំទ្រយុទ្ធសាស្ត្រ ដើម្បីអភិវឌ្ឍន៍អង្គការ",
+		description:
+			"ផ្តល់ការណែនាំ និងការគាំទ្រយុទ្ធសាស្ត្រ ដើម្បីអភិវឌ្ឍន៍អង្គការ",
 		members: [
 			{
 				id: "3",
@@ -138,34 +157,40 @@ const organizationData = [
 				phone: "+855 12 345 681",
 				location: "ភ្នំពេញ",
 				joinDate: "2018",
-				image: "https://images.pexels.com/photos/3184341/pexels-photo-3184341.jpeg?auto=compress&cs=tinysrgb&w=400",
-				skills: ["Strategic Advisory", "Education Policy", "Organizational Development"],
+				image:
+					"https://images.pexels.com/photos/3184341/pexels-photo-3184341.jpeg?auto=compress&cs=tinysrgb&w=400",
+				skills: [
+					"Strategic Advisory",
+					"Education Policy",
+					"Organizational Development",
+				],
 				experience: [
 					{
 						title: "Chief Advisor",
 						company: "Mettyerng Organization",
 						period: "2018 - Present",
-						description: "Providing strategic guidance and policy recommendations for organizational development."
-					}
+						description:
+							"Providing strategic guidance and policy recommendations for organizational development.",
+					},
 				],
 				education: [
 					{
 						degree: "PhD in Education",
 						institution: "Chulalongkorn University",
-						year: "2005"
-					}
+						year: "2005",
+					},
 				],
 				socialLinks: [],
 				achievements: [
 					"15+ years in education sector",
-					"Advised multiple NGOs on strategic development"
+					"Advised multiple NGOs on strategic development",
 				],
 				languages: [
 					{ language: "Khmer", level: "Native" },
 					{ language: "English", level: "Fluent" },
-					{ language: "Thai", level: "Intermediate" }
-				]
-			}
+					{ language: "Thai", level: "Intermediate" },
+				],
+			},
 		],
 	},
 	{
@@ -175,7 +200,8 @@ const organizationData = [
 		icon: BookOpen,
 		color: "from-blue-500 to-indigo-500",
 		bgColor: "bg-blue-50",
-		description: "ទទួលបន្ទុកគម្រោងអប់រំ និងការបណ្តុះបណ្តាល សម្រាប់កុមារ និងយុវជន",
+		description:
+			"ទទួលបន្ទុកគម្រោងអប់រំ និងការបណ្តុះបណ្តាល សម្រាប់កុមារ និងយុវជន",
 		members: [
 			{
 				id: "4",
@@ -189,33 +215,40 @@ const organizationData = [
 				phone: "+855 12 345 683",
 				location: "ភ្នំពេញ",
 				joinDate: "2020",
-				image: "https://images.pexels.com/photos/3184343/pexels-photo-3184343.jpeg?auto=compress&cs=tinysrgb&w=400",
-				skills: ["Curriculum Development", "Teaching", "Educational Technology", "Child Development"],
+				image:
+					"https://images.pexels.com/photos/3184343/pexels-photo-3184343.jpeg?auto=compress&cs=tinysrgb&w=400",
+				skills: [
+					"Curriculum Development",
+					"Teaching",
+					"Educational Technology",
+					"Child Development",
+				],
 				experience: [
 					{
 						title: "Education Director",
 						company: "Mettyerng Organization",
 						period: "2020 - Present",
-						description: "Leading educational programs and curriculum development for community children."
-					}
+						description:
+							"Leading educational programs and curriculum development for community children.",
+					},
 				],
 				education: [
 					{
 						degree: "Master in Education",
 						institution: "Royal University of Phnom Penh",
-						year: "2018"
-					}
+						year: "2018",
+					},
 				],
 				socialLinks: [],
 				achievements: [
 					"Developed curriculum for 200+ children",
-					"Improved literacy rates by 60% in target communities"
+					"Improved literacy rates by 60% in target communities",
 				],
 				languages: [
 					{ language: "Khmer", level: "Native" },
-					{ language: "English", level: "Fluent" }
-				]
-			}
+					{ language: "English", level: "Fluent" },
+				],
+			},
 		],
 	},
 	{
@@ -239,39 +272,48 @@ const organizationData = [
 				phone: "+855 12 345 685",
 				location: "សៀមរាប",
 				joinDate: "2019",
-				image: "https://images.pexels.com/photos/3184345/pexels-photo-3184345.jpeg?auto=compress&cs=tinysrgb&w=400",
-				skills: ["Traditional Dance", "Khmer Music", "Cultural Preservation", "Performance Arts"],
+				image:
+					"https://images.pexels.com/photos/3184345/pexels-photo-3184345.jpeg?auto=compress&cs=tinysrgb&w=400",
+				skills: [
+					"Traditional Dance",
+					"Khmer Music",
+					"Cultural Preservation",
+					"Performance Arts",
+				],
 				experience: [
 					{
 						title: "Culture Director",
 						company: "Mettyerng Organization",
 						period: "2019 - Present",
-						description: "Preserving and promoting traditional Khmer culture through various programs and events."
-					}
+						description:
+							"Preserving and promoting traditional Khmer culture through various programs and events.",
+					},
 				],
 				education: [
 					{
 						degree: "Bachelor in Fine Arts",
 						institution: "Royal University of Fine Arts",
-						year: "2015"
-					}
+						year: "2015",
+					},
 				],
 				socialLinks: [],
 				achievements: [
 					"Organized 20+ cultural events",
-					"Trained 100+ youth in traditional arts"
+					"Trained 100+ youth in traditional arts",
 				],
 				languages: [
 					{ language: "Khmer", level: "Native" },
-					{ language: "English", level: "Intermediate" }
-				]
-			}
+					{ language: "English", level: "Intermediate" },
+				],
+			},
 		],
 	},
 ];
 
 export default function StructurePage() {
-	const [expandedSections, setExpandedSections] = useState<string[]>(["executive"]);
+	const [expandedSections, setExpandedSections] = useState<string[]>([
+		"executive",
+	]);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedDepartment, setSelectedDepartment] = useState<string>("all");
 	const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -286,15 +328,20 @@ export default function StructurePage() {
 	};
 
 	const filteredStructure = organizationData.filter((section) => {
-		if (selectedDepartment !== "all" && section.id !== selectedDepartment) return false;
+		if (selectedDepartment !== "all" && section.id !== selectedDepartment)
+			return false;
 		if (searchTerm) {
 			return (
 				section.title_en.toLowerCase().includes(searchTerm.toLowerCase()) ||
 				section.members.some(
 					(member) =>
 						member.name_en.toLowerCase().includes(searchTerm.toLowerCase()) ||
-						member.position_en.toLowerCase().includes(searchTerm.toLowerCase()) ||
-						member.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()))
+						member.position_en
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase()) ||
+						member.skills.some((skill) =>
+							skill.toLowerCase().includes(searchTerm.toLowerCase())
+						)
 				)
 			);
 		}
@@ -326,16 +373,16 @@ export default function StructurePage() {
 						</motion.div>
 
 						<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-							{t('nav.structure')}
+							{t("nav.structure")}
 						</h1>
 
 						<p className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed mb-6 sm:mb-8 px-4 sm:px-0">
-							{t('about.subtitle')}
+							{t("about.subtitle")}
 						</p>
 
 						{/* Stats */}
 						<div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-2xl mx-auto">
-							<motion.div 
+							<motion.div
 								className="text-center"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
@@ -344,9 +391,11 @@ export default function StructurePage() {
 								<div className="text-2xl sm:text-3xl font-bold text-khmer-gold">
 									{organizationData.length}
 								</div>
-								<div className="text-sm sm:text-base text-gray-600">Departments</div>
+								<div className="text-sm sm:text-base text-gray-600">
+									Departments
+								</div>
 							</motion.div>
-							<motion.div 
+							<motion.div
 								className="text-center"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
@@ -355,9 +404,11 @@ export default function StructurePage() {
 								<div className="text-2xl sm:text-3xl font-bold text-khmer-red">
 									{totalMembers}
 								</div>
-								<div className="text-sm sm:text-base text-gray-600">Members</div>
+								<div className="text-sm sm:text-base text-gray-600">
+									Members
+								</div>
 							</motion.div>
-							<motion.div 
+							<motion.div
 								className="text-center"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
@@ -368,7 +419,7 @@ export default function StructurePage() {
 								</div>
 								<div className="text-sm sm:text-base text-gray-600">Years</div>
 							</motion.div>
-							<motion.div 
+							<motion.div
 								className="text-center"
 								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
@@ -377,7 +428,9 @@ export default function StructurePage() {
 								<div className="text-2xl sm:text-3xl font-bold text-green-600">
 									25+
 								</div>
-								<div className="text-sm sm:text-base text-gray-600">Projects</div>
+								<div className="text-sm sm:text-base text-gray-600">
+									Projects
+								</div>
 							</motion.div>
 						</div>
 					</AnimatedSection>
@@ -414,7 +467,7 @@ export default function StructurePage() {
 								</select>
 							</div>
 						</div>
-						
+
 						<div className="flex items-center space-x-2">
 							<Button
 								variant={viewMode === "grid" ? "default" : "outline"}
@@ -466,10 +519,14 @@ export default function StructurePage() {
 											whileHover={{ scale: 1.01 }}
 											whileTap={{ scale: 0.99 }}
 										>
-											<CardHeader className={`${section.bgColor} hover:opacity-80 transition-opacity duration-200`}>
+											<CardHeader
+												className={`${section.bgColor} hover:opacity-80 transition-opacity duration-200`}
+											>
 												<div className="flex items-center justify-between">
 													<div className="flex items-center space-x-4 sm:space-x-6">
-														<div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${section.color} rounded-xl flex items-center justify-center shadow-lg`}>
+														<div
+															className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${section.color} rounded-xl flex items-center justify-center shadow-lg`}
+														>
 															<section.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
 														</div>
 														<div>
@@ -482,12 +539,17 @@ export default function StructurePage() {
 														</div>
 													</div>
 													<div className="flex items-center space-x-3">
-														<Badge variant="secondary" className="hidden sm:flex">
+														<Badge
+															variant="secondary"
+															className="hidden sm:flex"
+														>
 															{section.members.length} members
 														</Badge>
 														<motion.div
 															animate={{
-																rotate: expandedSections.includes(section.id) ? 180 : 0,
+																rotate: expandedSections.includes(section.id)
+																	? 180
+																	: 0,
 															}}
 															transition={{ duration: 0.3 }}
 														>
@@ -510,11 +572,13 @@ export default function StructurePage() {
 													transition={{ duration: 0.3, ease: "easeInOut" }}
 												>
 													<CardContent className="p-4 sm:p-6 bg-white">
-														<div className={`grid gap-4 sm:gap-6 ${
-															viewMode === "grid" 
-																? "grid-cols-1 lg:grid-cols-2 xl:grid-cols-3" 
-																: "grid-cols-1"
-														}`}>
+														<div
+															className={`grid gap-4 sm:gap-6 ${
+																viewMode === "grid"
+																	? "grid-cols-1 lg:grid-cols-2"
+																	: "grid-cols-1"
+															}`}
+														>
 															{section.members.map((member, memberIndex) => (
 																<PersonCard
 																	key={member.id}
@@ -535,7 +599,7 @@ export default function StructurePage() {
 					</div>
 
 					{filteredStructure.length === 0 && (
-						<motion.div 
+						<motion.div
 							className="text-center py-12"
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
