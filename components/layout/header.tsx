@@ -27,11 +27,24 @@ type NavItem = {
 
 // === Navigation Array with Type ===
 const navigation: NavItem[] = [
-	{ key: "nav.home", href: "/" },
-	{ key: "nav.about", href: "/about" },
-	{ key: "nav.structure", href: "/structure" },
+	{
+		key: "nav.home",
+		href: "/",
+	},
+	{
+		key: "nav.about",
+		href: "/about",
+		submenu: [
+			{ key: "nav.subMenuAbout", href: "/about" },
+			{ key: "nav.structure", href: "/structure" },
+			{ key: "nav.network", href: "/about#network" },
+		],
+	},
 	{ key: "nav.news", href: "/news" },
-	{ key: "nav.videos", href: "/videos" },
+	{
+		key: "nav.videos",
+		href: "/videos",
+	},
 	// {
 	// 	key: "nav.projects",
 	// 	href: "/projects",
@@ -156,9 +169,16 @@ export function Header() {
 						<LanguageSwitcher />
 						<Button
 							asChild
+							variant="outline"
+							className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+						>
+							<Link href="/auth/login">{t("auth.login")}</Link>
+						</Button>
+						<Button
+							asChild
 							className="bg-blue-600 text-white hover:bg-blue-700"
 						>
-							<Link href="/contact">{t("nav.joinUs")}</Link>
+							<Link href="/auth/register">{t("auth.register")}</Link>
 						</Button>
 					</div>
 
@@ -226,13 +246,25 @@ export function Header() {
 									<LanguageSwitcher variant="compact" />
 									<Button
 										asChild
+										variant="outline"
+										className="w-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+									>
+										<Link
+											href="/auth/login"
+											onClick={() => setIsMobileMenuOpen(false)}
+										>
+											{t("auth.login")}
+										</Link>
+									</Button>
+									<Button
+										asChild
 										className="w-full bg-blue-600 text-white hover:bg-blue-700"
 									>
 										<Link
-											href="/contact"
+											href="/auth/register"
 											onClick={() => setIsMobileMenuOpen(false)}
 										>
-											{t("nav.joinUs")}
+											{t("auth.register")}
 										</Link>
 									</Button>
 								</div>
